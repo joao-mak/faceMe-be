@@ -9,7 +9,7 @@ const clarifaiApp = new Clarifai.App({
   apiKey: 'e17fc639c24446d6a08a848de5fc0e54',
 });
 
-const { PORT } = process.env;
+const { PORT = 3001 } = process.env;
 
 app.use(express.json());
 app.use(cors());

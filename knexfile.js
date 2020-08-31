@@ -1,36 +1,39 @@
-const ENV = 'development';
+const { DB_URL } = process.env;
+const ENV = process.env.NODE_ENV || 'development';
 
-const config = {
-  test: {
-    client: 'pg',
+const baseConfig = {
+  client: 'pg',
+  migrations: {
+    directory: './db/migrations',
+  },
+  seeds: {
+    directory: './db/seeds',
+  },
+};
+
+const customConfig = {
+  production: {
     connection: {
-      host: '127.0.0.1',
-      database: 'faceme_test',
-      username: 'joao',
-      password: 'password',
-    },
-    migrations: {
-      directory: './db/migrations',
-    },
-    seeds: {
-      directory: './db/seeds',
+      connectionString: DB_URL,
+      ssl: {
+        rejectUnauthorized: false,
+      },
     },
   },
   development: {
-    client: 'pg',
-    connection: process.env.DATABASE_URL || {
-      host: '127.0.0.1',
+    connection: {
       database: 'faceme',
       username: 'joao',
       password: 'password',
     },
-    migrations: {
-      directory: './db/migrations',
-    },
-    seeds: {
-      directory: './db/seeds',
+  },
+  test: {
+    connection: {
+      database: 'faceme_test',
+      username: 'joao',
+      password: 'password',
     },
   },
 };
 
-module.exports = config[ENV];
+module.exports = { ...customConfig[ENV], ...baseConfig };

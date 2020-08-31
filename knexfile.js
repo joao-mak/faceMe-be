@@ -1,7 +1,7 @@
-const { DB_URL } = process.env;
-const ENV = process.env.NODE_ENV || 'development';
+const { DB_URL, NODE_ENV } = process.env;
+const environment = NODE_ENV || 'development';
 
-console.log(process.env.DB_URL);
+console.log(process.env.DB_URL, NODE_ENV);
 
 const baseConfig = {
   client: 'pg',
@@ -38,4 +38,4 @@ const customConfig = {
   },
 };
 
-module.exports = { ...customConfig[ENV], ...baseConfig };
+module.exports = { ...customConfig[environment], ...baseConfig };

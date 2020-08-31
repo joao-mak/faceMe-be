@@ -97,10 +97,10 @@ app.get('/profile/:user_id', (req, res) => {
 });
 
 app.post('/image', (req, res) => {
-  const { user_id } = req.body;
+  const { user_id, numBoxes } = req.body;
   db('users')
     .where({ user_id })
-    .increment('entries', 1)
+    .increment('entries', numBoxes)
     .returning('entries')
     .then((entries) => {
       res.json(entries[0]);

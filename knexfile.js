@@ -1,6 +1,8 @@
 const { DB_URL } = process.env;
 const ENV = process.env.NODE_ENV || 'development';
 
+console.log(process.env.DB_URL);
+
 const baseConfig = {
   client: 'pg',
   migrations: {

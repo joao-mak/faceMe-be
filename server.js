@@ -9,7 +9,7 @@ const clarifaiApp = new Clarifai.App({
   apiKey: 'e17fc639c24446d6a08a848de5fc0e54',
 });
 
-const { PORT = 3001 } = process.env;
+const { PORT } = process.env;
 
 app.use(express.json());
 app.use(cors());
@@ -116,6 +116,6 @@ app.post('/imageUrl', (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json('unable to work with API'));
 });
-app.listen(PORT, () => {
+app.listen(PORT || 3001, () => {
   console.log(`listening on port ${PORT}...`);
 });

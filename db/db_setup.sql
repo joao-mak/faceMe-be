@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS faceme;
+DROP DATABASE IF EXISTS faceme_test;
+
+CREATE DATABASE faceme;
+CREATE DATABASE faceme_test;

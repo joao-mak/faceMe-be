@@ -116,6 +116,7 @@ app.post('/imageUrl', (req, res) => {
     .then((data) => res.json(data))
     .catch((err) => res.status(400).json('unable to work with API'));
 });
-app.listen(PORT || 3001, () => {
+
+app.listen(PORT, () => {
   console.log(`listening on port ${PORT}...`);
 });

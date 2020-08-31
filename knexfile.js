@@ -1,7 +1,7 @@
-const { DATABASE_URL, DB_URL, NODE_ENV } = process.env;
+const { DB_URL, NODE_ENV } = process.env;
 const environment = NODE_ENV || 'development';
 
-console.log(DATABASE_URL, DB_URL, NODE_ENV);
+console.log(DB_URL, NODE_ENV);
 
 const baseConfig = {
   client: 'pg',
@@ -24,10 +24,6 @@ const customConfig = {
   },
   development: {
     connection: {
-      connectionString: DB_URL,
-      ssl: {
-        rejectUnauthorized: false,
-      },
       database: 'faceme',
       username: 'joao',
       password: 'password',
